@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: null
+  labels:
+    app: api-region
+  name: api-region
+  namespace: my-games
+spec:
+  ports:
+  - port: 9090
+    protocol: TCP
+    targetPort: 5000
+  selector:
+    app: api-region
+status:
+  loadBalancer: {}

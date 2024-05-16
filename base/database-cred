@@ -1,0 +1,4 @@
+MYSQL_ROOT_PASSWORD=root
+MYSQL_DATABASE=video_games
+MYSQL_HOST=game-store-db
+MYSQL_USER=root

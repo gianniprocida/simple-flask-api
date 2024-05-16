@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: api-region
+  name: api-region
+  namespace: my-games
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: api-region
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: api-region
+    spec:
+      containers:
+      - image: gprocida/api-region:v1.0
+        name: api-region
+        envFrom:
+        - secretRef: 
+            name: mysql-cred
+        ports:
+        - containerPort: 5000
+        resources: {}
+status: {}

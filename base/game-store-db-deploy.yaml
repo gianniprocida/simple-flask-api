@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: game-store-db
+  name: game-store-db
+  namespace: my-games
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: game-store-db
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: game-store-db
+    spec:
+      volumes:
+       - name: my-sql-dump
+         configMap: 
+           name: mysql-dump-config
+      containers:
+      - image: mysql
+        name: mysql
+        env: 
+        - name: MYSQL_ROOT_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: mysql-cred
+              key: MYSQL_ROOT_PASSWORD
+        - name: MYSQL_DATABASE
+          valueFrom:
+            secretKeyRef:
+              name: mysql-cred
+              key: MYSQL_DATABASE
+        ports:
+        - containerPort: 3306
+        volumeMounts: 
+          - name: my-sql-dump
+            mountPath: /docker-entrypoint-initdb.d  
+        resources: {}
+status: {}

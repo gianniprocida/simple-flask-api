@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: api-genre
+  name: api-genre
+  namespace: my-games
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: api-genre
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: api-genre
+    spec:
+      containers:
+      - image: gprocida/api-genre:v1.0
+        name: api-genre
+        ports:
+        - containerPort: 5000
+        envFrom:
+        - secretRef: 
+            name: mysql-cred
+        resources: {}
+status: {}
