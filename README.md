@@ -17,7 +17,16 @@ This tutorial shows you how deploy a simple ingress to route certain paths of th
 * Apply the Ingress resource to expose the two APIs and the frontend service
 * Test your endpoints
 
+This next section offers a detailed walkthrough covering all the above points.
+To execute the examples, you have two options:
 
+1) Run each Kubernetes resource independently using:
+
+``` 
+kubectl apply -f <your-resource>.
+```
+
+2) Utilize Kustomize. Kustomize simplifies the process by automatically applying and creating all the resources defined in the kustomization.yaml file. Go directly to the section 'Applying Resources and Creating Secrets and ConfigMaps with Kustomize' if you utilize Kustomize. 
 
 ## How to initialize the MySQL database with specific state provided by a ConfigMap and a Secret resources 
 
