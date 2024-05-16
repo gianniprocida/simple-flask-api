@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Filter by region</title>
+</head>
+<body>
+    <h1>Filter by region</h1>
+    <form method="POST" action="{{ url_for('filter_by_region') }}">
+        <label for="myid">ID:</label>
+        <input type="text" id="myid" name="myid"><br><br>
+        
+        <input type="submit" value="Filter">
+    </form>
+</body>
+</html>
