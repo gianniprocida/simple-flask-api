@@ -26,7 +26,8 @@ To execute the examples, you have two options:
 kubectl apply -f <your-resource>.
 ```
 
-2) Utilize Kustomize. Kustomize simplifies the process by automatically applying and creating all the resources defined in the kustomization.yaml file. Go directly to the section 'Applying Resources and Creating Secrets and ConfigMaps with Kustomize' if you utilize Kustomize. 
+2) Utilize Kustomize. Kustomize simplifies the process by automatically applying and creating all the resources defined in the kustomization.yaml file. 
+If you prefer using Kustomize, proceed directly to the section titled 'Applying Resources and Creating Secrets and ConfigMaps with Kustomize' to run this example and skip the subsequent section."
 
 ## How to initialize the MySQL database with specific state provided by a ConfigMap and a Secret resources 
 
@@ -37,7 +38,7 @@ Clone the repository to your local machine, then navigate to the project folder 
 kubectl create ns my-games
 ```
 
-Create a file called `.database-cred` in the current working directory and add the environment variables:
+Create a file called `database-cred` in the current working directory and add the environment variables:
 
 ```
 MYSQL_ROOT_PASSWORD=<yourpassword>
@@ -49,7 +50,7 @@ MYSQL_USER=<youruser>
 Execute the following command to generate the secret:
 ```
 kubectl create secret generic mysql-cred \
---from-env-file=.database-cred -n my-games   
+--from-env-file=database-cred -n my-games   
 ```
 
 Next, let's create a ConfigMap named `mysql-dump-config` using a MySQL dump file named videogames-db.sql:
